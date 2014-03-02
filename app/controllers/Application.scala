@@ -11,8 +11,15 @@ import play.Logger.debug
 case class Recipe(id: Option[Long], name: String, ingredients: List[String])
 
 object Application extends Controller {
+  def recipes = {
+    DB.withConnection { implicit conn =>
+      SQL("select name from recipe order by name")().map(
+        r => r[String]("name")
+      ).toList
+    }
+  }
   def index = Action {
-    Ok(views.html.index(List("Lamb", "Mashed Potatoes", "Baked Potatoes")))
+    Ok(views.html.index(recipes))
   }
 
   val newRecipeForm = Form(
@@ -23,7 +30,7 @@ object Application extends Controller {
     )(Recipe.apply)(Recipe.unapply)
   )
   def manage = Action {
-    Ok(views.html.manage(List("Lamb", "Mashed Potatoes", "Baked Potatoes"), newRecipeForm))
+    Ok(views.html.manage(recipes, newRecipeForm))
   }
 
   def newRecipe = Action { implicit request =>
