@@ -1,0 +1,99 @@
+@(recipes: List[String])
+
+@main("Dinner Planning | Menu", "menu") {
+    <div class="well">
+        <h2>Select Menu</h2>
+    </div>
+        <div class="row bottom-padding">
+            <div class="col-md-2">Day</div>
+            <div class="col-md-2">Dish One</div>
+            <div class="col-md-2">Dish Two</div>
+            <div class="col-md-2">Dish Three</div>
+            <div class="col-md-2">Dish Four</div>
+            <div class="col-md-2">Dish Five</div>
+        </div>
+    <div class="row bottom-padding">
+        <div class="col-md-2">Monday</div>
+        @for(i <- 0 until 5) {
+            <div class="col-md-2">
+                <select name="monday-@i">
+                    @recipes.map { r =>
+                        <option value="@r">@r</option>
+                    }
+                </select>
+            </div>
+        }
+    </div>
+    <div class="row bottom-padding">
+        <div class="col-md-2">Tuesday</div>
+        @for(i <- 0 until 5) {
+        <div class="col-md-2">
+            <select name="tuesday-@i">
+                @recipes.map { r =>
+                <option value="@r">@r</option>
+                }
+            </select>
+        </div>
+        }
+    </div>
+    <div class="row bottom-padding">
+        <div class="col-md-2">Wednesday</div>
+        @for(i <- 0 until 5) {
+        <div class="col-md-2">
+            <select name="wednesday-@i">
+                @recipes.map { r =>
+                <option value="@r">@r</option>
+                }
+            </select>
+        </div>
+        }
+    </div>
+    <div class="row bottom-padding">
+        <div class="col-md-2">Thursday</div>
+        @for(i <- 0 until 5) {
+        <div class="col-md-2">
+            <select name="thursday-@i">
+                @recipes.map { r =>
+                <option value="@r">@r</option>
+                }
+            </select>
+        </div>
+        }
+    </div>
+    <div class="row bottom-padding">
+        <div class="col-md-2">Friday</div>
+        @for(i <- 0 until 5) {
+        <div class="col-md-2">
+            <select name="friday-@i">
+                @recipes.map { r =>
+                <option value="@r">@r</option>
+                }
+            </select>
+        </div>
+        }
+    </div>
+    <div class="row bottom-padding">
+        <div class="col-md-2">Saturday</div>
+        @for(i <- 0 until 5) {
+        <div class="col-md-2">
+            <select name="saturday-@i">
+                @recipes.map { r =>
+                <option value="@r">@r</option>
+                }
+            </select>
+        </div>
+        }
+    </div>
+    <div class="row bottom-padding">
+        <div class="col-md-2">Sunday</div>
+        @for(i <- 0 until 5) {
+        <div class="col-md-2">
+            <select name="sunday-@i">
+                @recipes.map { r =>
+                <option value="@r">@r</option>
+                }
+            </select>
+        </div>
+        }
+    </div>
+}
