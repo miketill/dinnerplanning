@@ -1,12 +1,12 @@
 # --- !Ups
 create table recipe (
-    id bigint auto_increment
-    , name varchar
+    id bigint identity
+    , name varchar not null
 );
 
 create table recipe_ingredient (
-    recipe_id bigint
-    , name varchar
+    recipe_id bigint not null
+    , name varchar not null
 );
 # --- !Downs
 drop table recipe_ingredient;
