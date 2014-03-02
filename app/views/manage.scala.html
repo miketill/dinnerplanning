@@ -1,7 +1,15 @@
-@(recipes: List[String])
+@(recipes: List[String], newRecipeForm: Form[Recipe])
+@import helper.twitterBootstrap._
 
 @main("Dinner Planning | Manage", "manage") {
     <div class="well">
         <h2>Manage Recipes</h2>
     </div>
+    @helper.form(action = routes.Application.newRecipe()) {
+        @helper.inputText(newRecipeForm("name"), '_label -> "New Recipe Name")
+        @helper.repeat(newRecipeForm("ingredients"), min=5) { i =>
+            @helper.inputText(i, '_label -> "Ingredient")
+        }
+        <input type="submit" class="btn primary" value="Save Recipe">
+    }
 }
